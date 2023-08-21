@@ -1,6 +1,7 @@
 # Stax
 
-A new Flutter project.
+![Frames](https://github.com/CaseyNguyen/Stax/assets/83699098/7ac9766a-1ccf-4fe7-974e-b51c2b8e69b5)
+
 
 ## Getting Started
 
