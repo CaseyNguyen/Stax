@@ -1,16 +1,15 @@
-# budge
+# Stax
 
-A new Flutter project.
+Stax is a mobile budgeting application built for Android and iOS. It is extremely simple to use and allows you to track simple expenses with ease.
 
-## Getting Started
+## Development
 
-This project is a starting point for a Flutter application.
+I'm not very good at budgeting, and I've used many applications to attempt to remedy this issue. I have enjoyed aspects of these apps, so accompanied with some true budgeting knowledge, and wanted to make a really easy app to budget with. I identified several user-related issues with apps that I have had in the past which led me to give up use of it. This includes:
+- Using recurring values incorrectly (i.e. paychecks).
+- Confusing UI.
 
-A few resources to get you started if this is your first Flutter project:
+With that in mind, I drew out wireframes for what I'd want in such an app:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Frames](https://github.com/CaseyNguyen/Stax/assets/83699098/7ac9766a-1ccf-4fe7-974e-b51c2b8e69b5)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+And then I started developing.
