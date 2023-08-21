@@ -2,45 +2,67 @@
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.17.2023 - Created page. Added one field with no connections.
+// 8.20.2023 - Fixed data connections, still need to fix incrementing ID.
 
+import 'package:budge/database/viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class AddForm extends StatefulWidget{
-  const AddForm({Key? key}) : super(key: key);
+import 'entities/income.dart';
+
+class IncomeForm extends StatefulWidget{
+  const IncomeForm({Key? key}) : super(key: key);
   @override
-  _AddFormState createState() => _AddFormState();
+  _IncomeFormState createState() => _IncomeFormState();
 }
 
-void addIncome(String label, int value){
-
-}
-
-
-class _AddFormState extends State<AddForm>{
+class _IncomeFormState extends State<IncomeForm>{
   final _formKey = GlobalKey<FormState>();
+  final label = TextEditingController();
+  final value = TextEditingController();
   @override
   Widget build(BuildContext context){
     return Form(
       key: _formKey,
-      child: Column(
-        children: [
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Label',
-            ),
+      child: Scaffold(
+        appBar: AppBar(title: const Center(child: Text("")),
+          centerTitle: true,
+        ),
+        body:
+        SizedBox(
+          child: Column(
+            children: [
+              const Text ("This is from a..."),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Label',
+                ),
+                controller: label,
+              ),
+              const Text ("...valued at..."),
+              TextFormField(
+                decoration: const InputDecoration(
+                    labelText: 'Value'
+                ),
+                keyboardType: TextInputType.number,
+                controller: value,
+              ),
+              ElevatedButton(
+                  child: const Text("Submit"),
+                  onPressed: (){
+                    if (_formKey.currentState!.validate()) {
+                      final model = Provider.of<ViewModel>(context, listen: false);
+                      Income addIncome = Income(3, label.toString(),
+                          double.parse(value.text));
+                      model.addIncome(addIncome);
+                      Navigator.pop(context);
+                    }
+                  }
+              ),
+            ],
           ),
-          const TextField(
-            decoration: InputDecoration(
-              labelText: 'Value'
-            ),
-            keyboardType: TextInputType.number,
-          ),
-          ElevatedButton(
-              child: const Text("Submit"),
-              onPressed: (){}
-          ),
-        ],
-      ),
+        )
+      )
     );
   }
 }

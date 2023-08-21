@@ -15,11 +15,9 @@ class ViewModel extends ChangeNotifier{
     return(await _db.incomeDao.findAllIncomes());
   }
 
-  void addIncome() async{
-    Income add = Income(1, "Hi", 1);
-    await _db.incomeDao.insertIncome(add);
+  // addIncome
+  void addIncome(Income income) async{
+    await _db.incomeDao.insertIncome(income);
     notifyListeners();
   }
-
-
 }

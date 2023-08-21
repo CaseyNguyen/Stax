@@ -3,11 +3,12 @@
 // Special thanks to FlutterTemplates
 // VERSION CONTROL:
 // 8.17.2023 - Created bottom navigation buttons (no functionality).
+// 8.18.2023 - Updated the bottom navigation buttons.
 
 import 'package:budge/add_form.dart';
+import 'package:budge/views/buttons.dart';
 import 'package:budge/views/list.dart';
 import 'package:flutter/material.dart';
-import 'package:budge/views/graph.dart';
 
 class Wrapper extends StatefulWidget{
   const Wrapper({Key? key}) : super(key: key);
@@ -26,15 +27,11 @@ class _WrapperState extends State<Wrapper>{
         centerTitle: true,
       ),
       body: TransactionList(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: _navItems,
-        currentIndex: _selectedIndex,
-        onTap: (int index){
-          setState((){
-            _selectedIndex = index;
-          });
-        }
-      ),
+      bottomNavigationBar: const BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
+        child: TransactionButton(),
+      )
     );
   }
 }
@@ -43,18 +40,11 @@ class _WrapperState extends State<Wrapper>{
 // NOTE: You must have at least 2 items for the app to run.
 const _navItems = [
   BottomNavigationBarItem(
-      icon: Icon(Icons.bar_chart),
-      activeIcon: Icon(Icons.bar_chart_rounded),
-      label: "Overview"
-  ),
-  BottomNavigationBarItem(
     icon: Icon(Icons.arrow_circle_up),
-    activeIcon: Icon(Icons.arrow_circle_up_rounded),
     label: "Income"
   ),
   BottomNavigationBarItem(
     icon: Icon(Icons.arrow_circle_down_rounded),
-    activeIcon: Icon(Icons.arrow_circle_down_rounded),
     label: "Expense"
   ),
 ];

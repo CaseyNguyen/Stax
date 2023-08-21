@@ -1,7 +1,11 @@
+// list.dart
+// Created by Casey Nguyen
+// VERSION CONTROL:
+// 8.18.2023 - Created to very neatly hold transaction list.
+
 import 'package:budge/database/viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 class TransactionList extends StatelessWidget{
   const TransactionList({super.key});
@@ -9,7 +13,6 @@ class TransactionList extends StatelessWidget{
   Widget build(BuildContext context){
     final model = context.watch<ViewModel>();
     final list = model.incomes;
-
 
     return FutureBuilder(
       future: list,
@@ -20,10 +23,14 @@ class TransactionList extends StatelessWidget{
             itemCount: view.length,
             itemBuilder: (context, index) =>
                 Card(
-                  child: ListTile(
-                    onTap: () {},
+                  child: ExpansionTile(
                     title: Text(view[index].name),
                     subtitle: Text(view[index].value.toString()),
+                    children: const [
+                      ListTile(
+                          title: Text("More information")
+                      ),
+                    ],
                   )
                 )
           );
