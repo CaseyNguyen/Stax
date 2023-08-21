@@ -12,4 +12,6 @@ With that in mind, I drew out wireframes for what I'd want in such an app:
 
 ![Frames](https://github.com/CaseyNguyen/Stax/assets/83699098/7ac9766a-1ccf-4fe7-974e-b51c2b8e69b5)
 
-And then I started developing.
+Then, I wanted to select a color palette that would make it clear what each piece of information meant. I used Coolors, a neat tool for generating five-color palettes.
+
+![image](https://github.com/CaseyNguyen/Stax/assets/83699098/f7a3f780-0289-476f-9081-b45c360447fd)
