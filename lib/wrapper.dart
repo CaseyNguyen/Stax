@@ -8,12 +8,12 @@
 import 'package:budge/add_form.dart';
 import 'package:budge/views/buttons.dart';
 import 'package:budge/views/list.dart';
+import 'package:budge/views/topbuttons.dart';
 import 'package:budge/views/visualizer.dart';
 import 'package:flutter/material.dart';
 
 class Wrapper extends StatefulWidget{
   const Wrapper({Key? key}) : super(key: key);
-
   @override
   State<Wrapper> createState() => _WrapperState();
 }
@@ -24,6 +24,7 @@ class _WrapperState extends State<Wrapper>{
 
     return Scaffold(
       appBar: AppBar(title: const Center(child: Text("Dashboard")),
+        leading: const TopButton(),
         centerTitle: true,
       ),
       body: const DataVisualizer(),
@@ -35,16 +36,3 @@ class _WrapperState extends State<Wrapper>{
     );
   }
 }
-
-// The list of items. When making updates, change THIS.
-// NOTE: You must have at least 2 items for the app to run.
-const _navItems = [
-  BottomNavigationBarItem(
-    icon: Icon(Icons.arrow_circle_up),
-    label: "Income"
-  ),
-  BottomNavigationBarItem(
-    icon: Icon(Icons.arrow_circle_down_rounded),
-    label: "Expense"
-  ),
-];

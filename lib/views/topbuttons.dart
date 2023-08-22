@@ -5,38 +5,65 @@ import 'package:provider/provider.dart';
 
 import '../database/viewmodel.dart';
 
-class TransactionButton extends StatelessWidget{
-  const TransactionButton({super.key});
+// This is the type used by the popup menu below.
+enum SampleItem { itemOne, itemTwo, itemThree }
+
+class TopButton extends StatefulWidget {
+  const TopButton({super.key});
+
   @override
-  Widget build(BuildContext context){
-    double screenWidth = MediaQuery.of(context).size.width;
-    return Wrap(
-        alignment: WrapAlignment.center,
-        children:[
-          Container(
-            width: screenWidth / 2,
-            color: const Color(0xFF21FA90),
-            child: TextButton(
-              child: const Icon(Icons.add, color: Colors.white),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const IncomeForm()),
-                );},
+  State<TopButton> createState() => _TopButtonState();
+}
+
+class _TopButtonState extends State<TopButton> {
+  SampleItem? selectedMenu;
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<SampleItem>(
+        initialValue: selectedMenu,
+        // Callback that sets the selected popup menu item.
+        onSelected: (SampleItem item) {
+          setState(() {
+            selectedMenu = item;
+          });
+        },
+        itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
+          PopupMenuItem<SampleItem>(
+            value: SampleItem.itemOne,
+            child: Wrap(
+                children: [
+                  Icon(Icons.settings),
+                  Container(width: 6),
+                  Text('Settings')
+                ]
             ),
           ),
-          Container(
-            width: screenWidth / 2,
-            color: const Color(0xFFFF6B6B),
-            child: TextButton(
-              child: const Icon(Icons.remove, color: Colors.white),
-              onPressed: () {
-                final model = Provider.of<ViewModel>(context, listen: false);
-                model.deleteIncome();
+          PopupMenuItem<SampleItem>(
+            value: SampleItem.itemTwo,
+            child: Wrap(
+              children: [
+                Icon(Icons.delete_forever),
+                Container(width: 6),
+                Text('Purge Data')
+              ]
+            ),
+            onTap: () {
+              final model = Provider.of<ViewModel>(context, listen: false);
+              model.deleteIncome();
               },
+          ),
+          PopupMenuItem<SampleItem>(
+            value: SampleItem.itemThree,
+            child: Wrap(
+                children: [
+                  Icon(Icons.newspaper),
+                  Container(width: 6),
+                  Text('Credits')
+                ]
             ),
           ),
-        ]
+      ]
     );
   }
 }

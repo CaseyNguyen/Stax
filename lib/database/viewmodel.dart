@@ -9,6 +9,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import '../entities/transaction.dart';
 import 'database.dart';
+import 'dart:math';
 
 class ViewModel extends ChangeNotifier{
   final BudgeDatabase _db;
@@ -31,9 +32,10 @@ class ViewModel extends ChangeNotifier{
   // IN: A short description of the transaction and a value.
   // OUT: Adds the income to the data table.
   void addIncome(String name, double value) async {
-    int? idLast = await _db.transactionDao.retrieveLastID();
+    var rng = Random();
+    int id = rng.nextInt(900000) + 100000;
     notifyListeners();
-    Transaction addIncome = Transaction(idLast! + 1, name, value);
+    Transaction addIncome = Transaction(id, name, value);
     await _db.transactionDao.insertIncome(addIncome);
     notifyListeners();
   }

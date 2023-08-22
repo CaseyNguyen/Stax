@@ -35,10 +35,7 @@ class TransactionButton extends StatelessWidget{
           color: const Color(0xFFFF6B6B),
           child: TextButton(
               child: const Icon(Icons.remove, color: Colors.white),
-              onPressed: () {
-                final model = Provider.of<ViewModel>(context, listen: false);
-                model.deleteIncome();
-                },
+              onPressed: () {},
               ),
           ),
       ]

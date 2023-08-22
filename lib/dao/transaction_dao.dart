@@ -2,6 +2,7 @@
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.18.2023 - DAO created.
+// 8.21.2023 - Changed DAO to 'Transaction'.
 
 // When adding new DAO functions, you MUST run the following command in the
 // console to update properly:
