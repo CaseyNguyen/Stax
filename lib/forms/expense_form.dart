@@ -7,50 +7,14 @@
 
 import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'dart:math' as math;
+import 'decimal_formatter.dart';
 
 
 class ExpenseForm extends StatefulWidget{
   const ExpenseForm({Key? key}) : super(key: key);
   @override
   _ExpenseFormState createState() => _ExpenseFormState();
-}
-
-// Code is repurposed from Ajay Kumar. Special thanks!
-class DecimalTextInputFormatter extends TextInputFormatter {
-  DecimalTextInputFormatter({required this.decimalRange})
-      : assert(decimalRange == null || decimalRange > 0);
-  final int decimalRange;
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, // unused.
-      TextEditingValue newValue,
-      ) {
-    TextSelection newSelection = newValue.selection;
-    String truncated = newValue.text;
-    if (decimalRange != null) {
-      String value = newValue.text;
-      if (value.contains(".") &&
-          value.substring(value.indexOf(".") + 1).length > decimalRange) {
-        truncated = oldValue.text;
-        newSelection = oldValue.selection;
-      } else if (value == ".") {
-        truncated = "0.";
-        newSelection = newValue.selection.copyWith(
-          baseOffset: math.min(truncated.length, truncated.length + 1),
-          extentOffset: math.min(truncated.length, truncated.length + 1),
-        );
-      }
-      return TextEditingValue(
-        text: truncated,
-        selection: newSelection,
-        composing: TextRange.empty,
-      );
-    }
-    return newValue;
-  }
 }
 
 class _ExpenseFormState extends State<ExpenseForm>{
@@ -63,7 +27,7 @@ class _ExpenseFormState extends State<ExpenseForm>{
     return Form(
       key: _formKey,
       child: Scaffold(
-        appBar: AppBar(title: const Center(child: Text("")),
+        appBar: AppBar(title: const Text("Add Income"),
           centerTitle: true,
         ),
         body:
@@ -75,12 +39,12 @@ class _ExpenseFormState extends State<ExpenseForm>{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(height: 10), // Divider
-                      const Text ("This is for a"),
+                      const Text ("This is for"),
                       TextFormField(
                         textCapitalization: TextCapitalization.words,
                         textAlign: TextAlign.center,
                         decoration: const InputDecoration(
-                          hintText: 'Paycheck',
+                          hintText: 'Ex. Korean BBQ',
                         ),
                         controller: label,
                       ),
@@ -91,7 +55,7 @@ class _ExpenseFormState extends State<ExpenseForm>{
                           inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
                           decoration: const InputDecoration(
                               prefixText: '\$',
-                              hintText: '40.99'
+                              hintText: '31.99'
                           ),
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: value,
@@ -115,7 +79,6 @@ class _ExpenseFormState extends State<ExpenseForm>{
                   ),
                 )
             )
-
       )
     );
   }

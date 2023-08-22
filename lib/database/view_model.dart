@@ -18,6 +18,17 @@ class ViewModel extends ChangeNotifier{
     return(await _db.incomeDao.findAllTransactions());
   }
 
+  Future<double> get balance async{
+    double value = 0;
+    if (await _db.incomeDao.sumIncome() != null){
+      value += (await _db.incomeDao.sumIncome())!;
+    }
+    if (await _db.incomeDao.sumExpense() != null){
+      value -= (await _db.incomeDao.sumExpense())!;
+    }
+    return(value);
+  }
+
   Future<double> get totalIncome async{
     final list = await _db.incomeDao.findAllTransactions();
     double totalVal = 0;

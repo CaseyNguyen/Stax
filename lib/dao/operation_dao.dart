@@ -19,12 +19,12 @@ abstract class IncomeDao{
   Future<List<Income>> findAllTransactions();
 
   // Retrieve all incomes from the DB.
-  @Query('SELECT * FROM Income WHERE type == 0')
-  Future<List<Income>> findAllIncomes();
+  @Query('SELECT SUM(value) FROM Income WHERE type = 0')
+  Future<double?> sumIncome();
 
   // Retrieve all expenses from the DB.
-  @Query('SELECT * FROM Income WHERE type == 1')
-  Future<List<Income>> findAllExpenses();
+  @Query('SELECT SUM(value) FROM Income WHERE type = 1')
+  Future<double?> sumExpense();
 
   // Get the last known ID.
   @Query('SELECT IFNULL(MAX(id), 0) FROM Income')
