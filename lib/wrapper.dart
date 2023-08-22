@@ -18,15 +18,14 @@ class Wrapper extends StatefulWidget{
 }
 
 class _WrapperState extends State<Wrapper>{
-
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context){
+
     return Scaffold(
       appBar: AppBar(title: const Center(child: Text("Dashboard")),
         centerTitle: true,
       ),
-      body: TransactionList(),
+      body: const TransactionList(),
       bottomNavigationBar: const BottomAppBar(
         color: Colors.transparent,
         elevation: 0,

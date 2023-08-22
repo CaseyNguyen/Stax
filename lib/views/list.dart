@@ -2,6 +2,7 @@
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.18.2023 - Created to very neatly hold transaction list.
+// 8.21.2023 - Fixed doubles to only show two decimals.
 
 import 'package:budge/database/viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class TransactionList extends StatelessWidget{
                 Card(
                   child: ExpansionTile(
                     title: Text(view[index].name),
-                    subtitle: Text(view[index].value.toString()),
+                    subtitle: Text(view[index].value.toStringAsFixed(2)),
                     children: const [
                       ListTile(
                           title: Text("More information")

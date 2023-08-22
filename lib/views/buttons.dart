@@ -2,7 +2,7 @@
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.18.2023 - Created to display buttons for creating transactions.
-// 8.20.2023 - Updated to match final design (solid color).
+// 8.21.2023 - Updated to match final design (solid color).
 
 import 'package:budge/add_form.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class TransactionButton extends StatelessWidget{
       children:[
         Container(
           width: screenWidth / 2,
-          color: Colors.green,
+          color: const Color(0xFF21FA90),
           child: TextButton(
             child: const Icon(Icons.add, color: Colors.white),
             onPressed: () {
@@ -29,7 +29,7 @@ class TransactionButton extends StatelessWidget{
         ),
         Container(
           width: screenWidth / 2,
-          color: Colors.red,
+          color: const Color(0xFFFF6B6B),
           child: TextButton(
               child: const Icon(Icons.remove, color: Colors.white),
               onPressed: () {},
