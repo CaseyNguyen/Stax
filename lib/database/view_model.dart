@@ -1,10 +1,8 @@
-// viewmodel.dart
+// view_model.dart
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.18.2023 - Viewmodel created with "Add" and "List" functionality.
-// 8.21.2023 - Autoincrements ID, and added delete all records functionality.
-
-import 'dart:developer';
+// 8.21.2023 - Autoincrement ID, and added delete all records functionality.
 
 import 'package:flutter/cupertino.dart';
 import '../entities/transaction.dart';
@@ -32,11 +30,11 @@ class ViewModel extends ChangeNotifier{
   // addIncome
   // IN: A short description of the transaction and a value.
   // OUT: Adds the income to the data table.
-  void addIncome(String name, double value) async {
+  void addIncome(int type, String name, double value) async {
     var rng = Random();
     int id = rng.nextInt(900000) + 100000;
     notifyListeners();
-    Income addIncome = Income(id, name, value);
+    Income addIncome = Income(id, type, name, value);
     await _db.incomeDao.insertIncome(addIncome);
     notifyListeners();
   }

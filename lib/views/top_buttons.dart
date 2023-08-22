@@ -1,9 +1,8 @@
 
-import 'package:budge/forms/income_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../database/viewmodel.dart';
+import '../database/view_model.dart';
 
 // This is the type used by the popup menu below.
 enum SampleItem { itemOne, itemTwo, itemThree }
@@ -17,7 +16,6 @@ class TopButton extends StatefulWidget {
 
 class _TopButtonState extends State<TopButton> {
   SampleItem? selectedMenu;
-
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<SampleItem>(
@@ -32,19 +30,21 @@ class _TopButtonState extends State<TopButton> {
           PopupMenuItem<SampleItem>(
             value: SampleItem.itemOne,
             child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Icon(Icons.settings),
-                  Container(width: 6),
-                  Text('Settings')
+                  const Icon(Icons.settings),
+                  Container(width: 8),
+                  const Text('Settings')
                 ]
             ),
           ),
           PopupMenuItem<SampleItem>(
             value: SampleItem.itemTwo,
             child: Wrap(
-              children: [
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
                 Icon(Icons.delete_forever),
-                Container(width: 6),
+                Container(width: 8),
                 Text('Purge Data')
               ]
             ),
@@ -56,9 +56,10 @@ class _TopButtonState extends State<TopButton> {
           PopupMenuItem<SampleItem>(
             value: SampleItem.itemThree,
             child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Icon(Icons.newspaper),
-                  Container(width: 6),
+                  Container(width: 8),
                   Text('Credits')
                 ]
             ),

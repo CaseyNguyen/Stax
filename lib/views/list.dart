@@ -4,7 +4,7 @@
 // 8.18.2023 - Created to very neatly hold transaction list.
 // 8.21.2023 - Fixed doubles to only show two decimals.
 
-import 'package:budge/database/viewmodel.dart';
+import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

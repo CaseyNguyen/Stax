@@ -5,12 +5,10 @@
 // 8.20.2023 - Added database connections; still need to fix incrementing ID.
 // 8.21.2023 - Aligned to center. Added text formatting and labels.
 
-import 'package:budge/database/viewmodel.dart';
+import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
-import '../entities/transaction.dart';
 import 'dart:math' as math;
 
 
@@ -77,7 +75,7 @@ class _IncomeFormState extends State<IncomeForm>{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(height: 10), // Divider
-                      const Text ("This is from a..."),
+                      const Text ("This is from a"),
                       TextFormField(
                         textCapitalization: TextCapitalization.words,
                         textAlign: TextAlign.center,
@@ -87,7 +85,7 @@ class _IncomeFormState extends State<IncomeForm>{
                         controller: label,
                       ),
                       Container(height: 10), // Divider
-                      const Text ("...valued at..."),
+                      const Text ("valued at"),
                       TextFormField(
                           textAlign: TextAlign.center,
                           inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
@@ -107,7 +105,7 @@ class _IncomeFormState extends State<IncomeForm>{
                             onPressed: (){
                               if (_formKey.currentState!.validate()) {
                                 final model = Provider.of<ViewModel>(context, listen: false);
-                                model.addIncome(label.text, double.parse(value.text));
+                                model.addIncome(0, label.text, double.parse(value.text));
                                 Navigator.pop(context);
                               }
                             }

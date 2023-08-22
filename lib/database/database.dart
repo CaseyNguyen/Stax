@@ -9,7 +9,7 @@ import 'dart:async';
 import 'package:floor/floor.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 
-import '../dao/income_dao.dart';
+import '../dao/operation_dao.dart';
 import '../entities/transaction.dart';
 
 part 'database.g.dart';

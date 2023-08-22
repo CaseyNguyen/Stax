@@ -7,9 +7,6 @@
 
 import 'package:budge/forms/income_form.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../database/viewmodel.dart';
 import '../forms/expense_form.dart';
 
 class TransactionButton extends StatelessWidget{
@@ -21,6 +18,7 @@ class TransactionButton extends StatelessWidget{
       alignment: WrapAlignment.center,
       children:[
         Container(
+          height: 75,
           width: screenWidth / 2,
           color: const Color(0xFF21FA90),
           child: TextButton(
@@ -33,6 +31,7 @@ class TransactionButton extends StatelessWidget{
           ),
         ),
         Container(
+          height: 75,
           width: screenWidth / 2,
           color: const Color(0xFFFF6B6B),
           child: TextButton(

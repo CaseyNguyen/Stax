@@ -1,9 +1,10 @@
 // visualizer.dart
 // Created by Casey Nguyen
 // VERSION CONTROL:
-// 8.21.2023 - Created a clean way to visualize the money.
+// 8.21.2023 - Created a clean way to visualize the money. The column is
+// currently causing a RenderFlex error which needs to be addressed.
 
-import 'package:budge/database/viewmodel.dart';
+import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -19,17 +20,21 @@ class DataVisualizer extends StatelessWidget{
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final view = snapshot.data!;
-            return Column(
+              return Column(
               children: [
-                Container(height: 10),
+                Container(height: 20),
+                const Text('Ready Cash:', style: TextStyle(fontSize: 20)),
                 Text('\$${view.toString()}', style: const TextStyle(fontSize: 40)),
-                Container(height: 10),
-                CircularPercentIndicator(
-                  radius: 120.0,
-                  lineWidth: 40.0,
-                  percent: 1.0,
-                  center: Text(view.toString()),
-                  progressColor: Colors.green,
+                Container(height: 30),
+                Flexible(
+                  child:
+                    CircularPercentIndicator(
+                      radius: 120.0,
+                      lineWidth: 40.0,
+                      percent: 0.9,
+                      center: Text('${view.toString()}%', style: const TextStyle(fontSize: 40)),
+                      progressColor: Colors.green,
+                    )
                 )
               ]
 

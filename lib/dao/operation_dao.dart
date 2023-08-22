@@ -1,4 +1,4 @@
-// income_dao.dart
+// operation_dao.dart
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.18.2023 - DAO created.
@@ -18,11 +18,19 @@ abstract class IncomeDao{
   @Query('SELECT * FROM Income')
   Future<List<Income>> findAllTransactions();
 
+  // Retrieve all incomes from the DB.
+  @Query('SELECT * FROM Income WHERE type == 0')
+  Future<List<Income>> findAllIncomes();
+
+  // Retrieve all expenses from the DB.
+  @Query('SELECT * FROM Income WHERE type == 1')
+  Future<List<Income>> findAllExpenses();
+
   // Get the last known ID.
   @Query('SELECT IFNULL(MAX(id), 0) FROM Income')
   Future<int?> retrieveLastID();
 
-  // Remove all incomes.
+  // Remove all transactions.
   // OUT: Resets the database, but doesn't drop the table.
   @Query('DELETE FROM Income')
   Future<void> deleteIncomes();

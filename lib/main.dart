@@ -3,15 +3,12 @@
 // VERSION CONTROL:
 // 8.17.2023 - Created the application. Assigned to Wrapper.
 
-import 'package:budge/forms/income_form.dart';
-import 'package:budge/database/viewmodel.dart';
+
+import 'package:budge/database/view_model.dart';
 import 'package:budge/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'database/database.dart';
-import 'package:flutter/widgets.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
