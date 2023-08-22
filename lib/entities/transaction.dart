@@ -8,11 +8,11 @@
 import 'package:floor/floor.dart';
 
 @entity
-class Transaction{
+class Income{
   @primaryKey
   final int id;
   final String name;
   final double value;
 
-  Transaction(this.id, this.name, this.value);
+  Income(this.id, this.name, this.value);
 }

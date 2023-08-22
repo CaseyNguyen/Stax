@@ -1,4 +1,4 @@
-// add_form.dart
+// income_form.dart
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.17.2023 - Created page. Added one field with no connections.
@@ -10,14 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'entities/transaction.dart';
+import '../entities/transaction.dart';
 import 'dart:math' as math;
 
 
-class IncomeForm extends StatefulWidget{
-  const IncomeForm({Key? key}) : super(key: key);
+class ExpenseForm extends StatefulWidget{
+  const ExpenseForm({Key? key}) : super(key: key);
   @override
-  _IncomeFormState createState() => _IncomeFormState();
+  _ExpenseFormState createState() => _ExpenseFormState();
 }
 
 // Code is repurposed from Ajay Kumar. Special thanks!
@@ -32,23 +32,19 @@ class DecimalTextInputFormatter extends TextInputFormatter {
       ) {
     TextSelection newSelection = newValue.selection;
     String truncated = newValue.text;
-
     if (decimalRange != null) {
       String value = newValue.text;
-
       if (value.contains(".") &&
           value.substring(value.indexOf(".") + 1).length > decimalRange) {
         truncated = oldValue.text;
         newSelection = oldValue.selection;
       } else if (value == ".") {
         truncated = "0.";
-
         newSelection = newValue.selection.copyWith(
           baseOffset: math.min(truncated.length, truncated.length + 1),
           extentOffset: math.min(truncated.length, truncated.length + 1),
         );
       }
-
       return TextEditingValue(
         text: truncated,
         selection: newSelection,
@@ -59,7 +55,7 @@ class DecimalTextInputFormatter extends TextInputFormatter {
   }
 }
 
-class _IncomeFormState extends State<IncomeForm>{
+class _ExpenseFormState extends State<ExpenseForm>{
   final _formKey = GlobalKey<FormState>();
   final label = TextEditingController();
   final value = TextEditingController();

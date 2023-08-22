@@ -1,4 +1,4 @@
-// transaction_dao.dart
+// income_dao.dart
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.18.2023 - DAO created.
@@ -13,21 +13,21 @@ import 'package:floor/floor.dart';
 import '../entities/transaction.dart';
 
 @dao
-abstract class TransactionDao{
+abstract class IncomeDao{
   // Retrieve ALL transactions from the DB.
-  @Query('SELECT * FROM Transaction')
-  Future<List<Transaction>> findAllTransactions();
+  @Query('SELECT * FROM Income')
+  Future<List<Income>> findAllTransactions();
 
   // Get the last known ID.
-  @Query('SELECT IFNULL(MAX(id), 0) FROM Transaction')
+  @Query('SELECT IFNULL(MAX(id), 0) FROM Income')
   Future<int?> retrieveLastID();
 
   // Remove all incomes.
   // OUT: Resets the database, but doesn't drop the table.
-  @Query('DELETE FROM Transaction')
+  @Query('DELETE FROM Income')
   Future<void> deleteIncomes();
 
   // Insert an income into the DB.
   @insert
-  Future<void> insertIncome(Transaction income);
+  Future<void> insertIncome(Income income);
 }

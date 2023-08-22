@@ -2,13 +2,15 @@
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.18.2023 - Created to display buttons for creating transactions.
-// 8.21.2023 - Updated to match final design (solid color).
+// 8.21.2023 - Updated to match final design (solid color). Added expense form
+// connection.
 
-import 'package:budge/add_form.dart';
+import 'package:budge/forms/income_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../database/viewmodel.dart';
+import '../forms/expense_form.dart';
 
 class TransactionButton extends StatelessWidget{
   const TransactionButton({super.key});
@@ -35,7 +37,12 @@ class TransactionButton extends StatelessWidget{
           color: const Color(0xFFFF6B6B),
           child: TextButton(
               child: const Icon(Icons.remove, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ExpenseForm()),
+                );
+              },
               ),
           ),
       ]

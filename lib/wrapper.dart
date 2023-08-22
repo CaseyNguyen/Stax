@@ -5,7 +5,7 @@
 // 8.17.2023 - Created bottom navigation buttons (no functionality).
 // 8.18.2023 - Updated the bottom navigation buttons.
 
-import 'package:budge/add_form.dart';
+import 'package:budge/forms/income_form.dart';
 import 'package:budge/views/buttons.dart';
 import 'package:budge/views/list.dart';
 import 'package:budge/views/topbuttons.dart';

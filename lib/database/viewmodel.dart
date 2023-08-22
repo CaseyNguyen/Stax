@@ -10,17 +10,18 @@ import 'package:flutter/cupertino.dart';
 import '../entities/transaction.dart';
 import 'database.dart';
 import 'dart:math';
+import 'package:flutter/widgets.dart';
 
 class ViewModel extends ChangeNotifier{
   final BudgeDatabase _db;
   ViewModel(this._db);
 
-  Future<List<Transaction>> get incomes async{
-    return(await _db.transactionDao.findAllTransactions());
+  Future<List<Income>> get incomes async{
+    return(await _db.incomeDao.findAllTransactions());
   }
 
   Future<double> get totalIncome async{
-    final list = await _db.transactionDao.findAllTransactions();
+    final list = await _db.incomeDao.findAllTransactions();
     double totalVal = 0;
     for (int i = 0; i < list.length; i++){
       totalVal += list[i].value;
@@ -35,14 +36,14 @@ class ViewModel extends ChangeNotifier{
     var rng = Random();
     int id = rng.nextInt(900000) + 100000;
     notifyListeners();
-    Transaction addIncome = Transaction(id, name, value);
-    await _db.transactionDao.insertIncome(addIncome);
+    Income addIncome = Income(id, name, value);
+    await _db.incomeDao.insertIncome(addIncome);
     notifyListeners();
   }
 
   // deleteIncome
   void deleteIncome() async{
-    await _db.transactionDao.deleteIncomes();
+    await _db.incomeDao.deleteIncomes();
     notifyListeners();
   }
 }
