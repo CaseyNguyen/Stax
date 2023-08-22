@@ -9,12 +9,12 @@ import 'dart:async';
 import 'package:floor/floor.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 
-import '../dao/income_dao.dart';
-import '../entities/income.dart';
+import '../dao/transaction_dao.dart';
+import '../entities/transaction.dart';
 
 part 'database.g.dart';
 
-@Database(version: 1, entities: [Income])
+@Database(version: 1, entities: [Transaction])
 abstract class BudgeDatabase extends FloorDatabase {
-  IncomeDao get incomeDao;
+  TransactionDao get transactionDao;
 }

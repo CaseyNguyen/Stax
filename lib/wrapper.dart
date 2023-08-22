@@ -8,6 +8,7 @@
 import 'package:budge/add_form.dart';
 import 'package:budge/views/buttons.dart';
 import 'package:budge/views/list.dart';
+import 'package:budge/views/visualizer.dart';
 import 'package:flutter/material.dart';
 
 class Wrapper extends StatefulWidget{
@@ -25,7 +26,7 @@ class _WrapperState extends State<Wrapper>{
       appBar: AppBar(title: const Center(child: Text("Dashboard")),
         centerTitle: true,
       ),
-      body: const TransactionList(),
+      body: const DataVisualizer(),
       bottomNavigationBar: const BottomAppBar(
         color: Colors.transparent,
         elevation: 0,

@@ -1,3 +1,8 @@
+// main.dart
+// Created by Casey Nguyen
+// VERSION CONTROL:
+// 8.17.2023 - Created the application. Assigned to Wrapper.
+
 import 'package:budge/add_form.dart';
 import 'package:budge/database/viewmodel.dart';
 import 'package:budge/wrapper.dart';
@@ -10,8 +15,6 @@ void main() async {
   runApp(MyApp(database: await $FloorBudgeDatabase.databaseBuilder("budge.db").build()));
 }
 
-
-
 class MyApp extends StatelessWidget {
   final BudgeDatabase database;
   const MyApp({super.key, required this.database});
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => ViewModel(database),
       child: MaterialApp(
-        title: 'Budge',
+        title: 'Stax',
         theme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,

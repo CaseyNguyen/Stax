@@ -1,4 +1,4 @@
-// income.dart
+// transaction.dart
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.17.2023 - Created Income class outline.
@@ -7,11 +7,11 @@
 import 'package:floor/floor.dart';
 
 @entity
-class Income{
+class Transaction{
   @primaryKey
   final int id;
   final String name;
   final double value;
 
-  Income(this.id, this.name, this.value);
+  Transaction(this.id, this.name, this.value);
 }

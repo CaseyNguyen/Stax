@@ -6,6 +6,9 @@
 
 import 'package:budge/add_form.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../database/viewmodel.dart';
 
 class TransactionButton extends StatelessWidget{
   const TransactionButton({super.key});
@@ -32,7 +35,10 @@ class TransactionButton extends StatelessWidget{
           color: const Color(0xFFFF6B6B),
           child: TextButton(
               child: const Icon(Icons.remove, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                final model = Provider.of<ViewModel>(context, listen: false);
+                model.deleteIncome();
+                },
               ),
           ),
       ]

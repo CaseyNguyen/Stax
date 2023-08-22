@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'entities/income.dart';
+import 'entities/transaction.dart';
 import 'dart:math' as math;
 
 
@@ -107,13 +107,11 @@ class _IncomeFormState extends State<IncomeForm>{
                         color: const Color(0XFF65AFFF),
                         width: screenWidth / 4,
                         child: TextButton(
-                            child: const Text("Submit", style: TextStyle(color: Colors.white, fontSize: 16)),
+                            child: const Text("Submit It", style: TextStyle(color: Colors.white, fontSize: 16)),
                             onPressed: (){
                               if (_formKey.currentState!.validate()) {
                                 final model = Provider.of<ViewModel>(context, listen: false);
-                                Income addIncome = Income(3, label.toString(),
-                                    double.parse(value.text));
-                                model.addIncome(addIncome);
+                                model.addIncome(label.text, double.parse(value.text));
                                 Navigator.pop(context);
                               }
                             }
