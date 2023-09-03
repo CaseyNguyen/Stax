@@ -61,7 +61,7 @@ class IncomeFormState extends State<IncomeForm>{
                       ),
                       Container(height: 10), // Divider
                       Container(
-                        color: const Color(0XFF65AFFF),
+                        color: const Color(0xFF21FA90),
                         width: screenWidth / 4,
                         child: TextButton(
                             child: const Text("Submit It", style: TextStyle(color: Colors.white, fontSize: 16)),

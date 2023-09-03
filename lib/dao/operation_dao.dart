@@ -19,8 +19,11 @@ abstract class IncomeDao{
   Future<List<Income>> findAllTransactions();
 
   // Retrieve all incomes from the DB.
-  @Query('SELECT SUM(value) FROM Income WHERE type = 0')
-  Future<double?> sumIncome();
+  @Query('SELECT * FROM Income')
+  Future<List<double>> sumIncome();
+
+  @Query('DROP TABLE IF EXISTS Income')
+  Future<void> drop();
 
   // Retrieve all expenses from the DB.
   @Query('SELECT SUM(value) FROM Income WHERE type = 1')

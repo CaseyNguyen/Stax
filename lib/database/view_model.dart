@@ -3,6 +3,8 @@
 // VERSION CONTROL:
 // 8.18.2023 - Viewmodel created with "Add" and "List" functionality.
 // 8.21.2023 - Autoincrement ID, and added delete all records functionality.
+// 8.22.2023 - Balance now displays the proper information in a list, feeding
+// the visualizer lots of cool data.
 
 import 'package:flutter/cupertino.dart';
 import '../entities/transaction.dart';
@@ -18,15 +20,26 @@ class ViewModel extends ChangeNotifier{
     return(await _db.incomeDao.findAllTransactions());
   }
 
-  Future<double> get balance async{
-    double value = 0;
-    if (await _db.incomeDao.sumIncome() != null){
-      value += (await _db.incomeDao.sumIncome())!;
+  // balance sends the visualizer information.
+  // Index 0 - Sum of incomes; Index 1 - Sum of expenses; 2 - Utilization %;
+  // 3 - Utilization % in visual.
+  Future<List<double>> get balance async{
+    // Need to fix this.
+    List<double> a = [0];
+    double b = 0;
+    for (int i = 0; i < a.length; i++){
+      b += a[i];
     }
-    if (await _db.incomeDao.sumExpense() != null){
-      value -= (await _db.incomeDao.sumExpense())!;
+    double totIncome = 50.0;
+    double totExpense = 100.0;
+    double utilization = (totIncome - totExpense) / totIncome;
+    double utilizationView = utilization;
+    if (utilizationView < 0) {
+      utilizationView = 0;
+    } else if (utilizationView > 1) {
+      utilizationView = 1;
     }
-    return(value);
+    return [totIncome, totExpense, utilization * 100, utilizationView, b];
   }
 
   Future<double> get totalIncome async{
@@ -47,6 +60,11 @@ class ViewModel extends ChangeNotifier{
     notifyListeners();
     Income addIncome = Income(id, type, name, value);
     await _db.incomeDao.insertIncome(addIncome);
+    notifyListeners();
+  }
+
+  void drop() async{
+    _db.incomeDao.drop();
     notifyListeners();
   }
 

@@ -62,7 +62,7 @@ class _ExpenseFormState extends State<ExpenseForm>{
                       ),
                       Container(height: 10), // Divider
                       Container(
-                        color: const Color(0XFF65AFFF),
+                        color: const Color(0xFFFF6B6B),
                         width: screenWidth / 4,
                         child: TextButton(
                             child: const Text("Submit It", style: TextStyle(color: Colors.white, fontSize: 16)),

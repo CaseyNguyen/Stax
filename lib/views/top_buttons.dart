@@ -1,7 +1,12 @@
+// top_buttons.dart
+// Created by Casey Nguyen
+// VERSION CONTROL:
+// 8.21.2023 - Created top menu buttons. Only delete DB has functionality.
+// 8.22.2023 - Alert dialog added to the delete button.
 
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../database/view_model.dart';
 
 // This is the type used by the popup menu below.
@@ -49,9 +54,19 @@ class _TopButtonState extends State<TopButton> {
               ]
             ),
             onTap: () {
+              log("Attempting to delete DB.");
+              final snackBar = SnackBar(
+                content: const Text('Deleted database information.'),
+                action: SnackBarAction(
+                  label: '',
+                  onPressed: () {
+                  },
+                ),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
               final model = Provider.of<ViewModel>(context, listen: false);
-              model.deleteIncome();
-              },
+              model.drop();
+            },
           ),
           PopupMenuItem<SampleItem>(
             value: SampleItem.itemThree,
@@ -63,6 +78,7 @@ class _TopButtonState extends State<TopButton> {
                   Text('Credits')
                 ]
             ),
+            onTap: () {}
           ),
       ]
     );
