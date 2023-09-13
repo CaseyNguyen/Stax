@@ -7,6 +7,7 @@
 // 8.21.2023 - Added the menu options.
 
 import 'package:budge/views/buttons.dart';
+import 'package:budge/views/list.dart';
 import 'package:budge/views/top_buttons.dart';
 import 'package:budge/views/visualizer.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class Wrapper extends StatefulWidget{
 }
 
 class _WrapperState extends State<Wrapper>{
+  final PageController _pageController = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context){
 
@@ -26,7 +29,13 @@ class _WrapperState extends State<Wrapper>{
         leading: const TopButton(),
         centerTitle: true,
       ),
-      body: const DataVisualizer(),
+        body: PageView(
+          controller: _pageController,
+          children: const <Widget>[
+            DataVisualizer(), // Replace with the first page widget
+            TransactionList(), // Replace with the second page widget
+          ],
+        ),
       bottomNavigationBar: const BottomAppBar(
         color: Colors.transparent,
         elevation: 0,

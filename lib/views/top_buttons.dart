@@ -65,7 +65,7 @@ class _TopButtonState extends State<TopButton> {
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
               final model = Provider.of<ViewModel>(context, listen: false);
-              model.drop();
+              model.deleteIncome();
             },
           ),
           PopupMenuItem<SampleItem>(

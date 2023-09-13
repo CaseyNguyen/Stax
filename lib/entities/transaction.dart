@@ -8,12 +8,13 @@
 import 'package:floor/floor.dart';
 
 @entity
-class Income{
+class Money{
   @primaryKey
   final int id;
   final int type; // The type of transaction. 0 is income, 1 is expense.
   final String name;
+  final String tag;
   final double value;
 
-  Income(this.id, this.type, this.name, this.value);
+  Money(this.id, this.type, this.name, this.tag, this.value);
 }

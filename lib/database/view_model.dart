@@ -16,39 +16,38 @@ class ViewModel extends ChangeNotifier{
   final BudgeDatabase _db;
   ViewModel(this._db);
 
-  Future<List<Income>> get incomes async{
-    return(await _db.incomeDao.findAllTransactions());
+  Future<List<Money>> get incomes async{
+    return(await _db.moneyDao.findAllTransactions());
   }
 
   // balance sends the visualizer information.
-  // Index 0 - Sum of incomes; Index 1 - Sum of expenses; 2 - Utilization %;
-  // 3 - Utilization % in visual.
+  // Index 0 - Sum of incomes; Index 1 - Sum of expenses; 2 - Ready cash;
+  // 3 - Utilization %, 4 - Utilization % for visual
   Future<List<double>> get balance async{
-    // Need to fix this.
-    List<double> a = [0];
-    double b = 0;
-    for (int i = 0; i < a.length; i++){
-      b += a[i];
+    List<Money> transactionList = await _db.moneyDao.findAllTransactions();
+    double incomeTotal = 0.0;
+    double expenseTotal = 0.0;
+    for (int i = 0; i < transactionList.length; i++){
+      if (transactionList[i].type == 0) {
+        incomeTotal += transactionList[i].value;
+      }
+      else {
+        expenseTotal += transactionList[i].value;
+      }
     }
-    double totIncome = 50.0;
-    double totExpense = 100.0;
-    double utilization = (totIncome - totExpense) / totIncome;
-    double utilizationView = utilization;
-    if (utilizationView < 0) {
-      utilizationView = 0;
-    } else if (utilizationView > 1) {
-      utilizationView = 1;
+    double balance = incomeTotal - expenseTotal;
+    double percentage = 1.0;
+    if (expenseTotal != 0){
+      percentage = balance / incomeTotal;
     }
-    return [totIncome, totExpense, utilization * 100, utilizationView, b];
-  }
-
-  Future<double> get totalIncome async{
-    final list = await _db.incomeDao.findAllTransactions();
-    double totalVal = 0;
-    for (int i = 0; i < list.length; i++){
-      totalVal += list[i].value;
+    double visualPercentage = percentage;
+    if (visualPercentage < 0.0){
+      visualPercentage = 0.0;
     }
-    return totalVal;
+    else if (visualPercentage > 1.0){
+      visualPercentage = 1.0;
+    }
+    return [incomeTotal, expenseTotal, balance, percentage *= 100, visualPercentage];
   }
 
   // addIncome
@@ -58,19 +57,19 @@ class ViewModel extends ChangeNotifier{
     var rng = Random();
     int id = rng.nextInt(900000) + 100000;
     notifyListeners();
-    Income addIncome = Income(id, type, name, value);
-    await _db.incomeDao.insertIncome(addIncome);
+    Money addIncome = Money(id, type, name, "Tag", value);
+    await _db.moneyDao.insertIncome(addIncome);
     notifyListeners();
   }
 
   void drop() async{
-    _db.incomeDao.drop();
+    _db.moneyDao.drop();
     notifyListeners();
   }
 
   // deleteIncome
   void deleteIncome() async{
-    await _db.incomeDao.deleteIncomes();
+    await _db.moneyDao.deleteIncomes();
     notifyListeners();
   }
 }

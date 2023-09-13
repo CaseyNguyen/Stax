@@ -14,7 +14,6 @@ class TransactionList extends StatelessWidget{
   Widget build(BuildContext context){
     final model = context.watch<ViewModel>();
     final list = model.incomes;
-
     return FutureBuilder(
       future: list,
       builder: (context, snapshot){

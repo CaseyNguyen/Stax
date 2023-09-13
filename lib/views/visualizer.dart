@@ -31,16 +31,16 @@ class _DataVisualizerState extends State<DataVisualizer>{
                 return Column(
                 children: [
                   Container(height: 30),
-                  const Text('Ready Cash:', style: TextStyle(fontSize: 20)),
-                  Text('\$${view.toString()}', style: const TextStyle(fontSize: 40)),
+                  const Text('Available Cash:', style: TextStyle(fontSize: 20)),
+                  Text('\$${double.parse((view[2]).toStringAsFixed(2))}', style: const TextStyle(fontSize: 40)),
                   Container(height: 30),
                   Flexible(
                     child:
                       CircularPercentIndicator(
                         radius: 120.0,
                         lineWidth: 40.0,
-                        percent: view[3],
-                        center: Text('${view[2].toString()}%', style: const TextStyle(fontSize: 40)),
+                        percent: view[4],
+                        center: const Text('', style: TextStyle(fontSize: 40)),
                         progressColor: Colors.green,
                       )
                   ),
