@@ -20,13 +20,14 @@ class IncomeFormState extends State<IncomeForm>{
   final _formKey = GlobalKey<FormState>();
   final label = TextEditingController();
   final value = TextEditingController();
+  final tag = TextEditingController();
   @override
   Widget build(BuildContext context){
     double screenWidth = MediaQuery.of(context).size.width;
     return Form(
       key: _formKey,
       child: Scaffold(
-        appBar: AppBar(title: const Text("Add Income"),
+        appBar: AppBar(title: const Text("Income"),
           centerTitle: true,
         ),
         body:
@@ -38,33 +39,37 @@ class IncomeFormState extends State<IncomeForm>{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(height: 10), // Divider
-                      const Text ("This is from a"),
                       TextFormField(
                         textCapitalization: TextCapitalization.words,
-                        textAlign: TextAlign.center,
                         decoration: const InputDecoration(
-                          hintText: 'Paycheck',
+                          hintText: 'Name',
                         ),
                         controller: label,
                       ),
                       Container(height: 10), // Divider
-                      const Text ("valued at"),
                       TextFormField(
-                          textAlign: TextAlign.center,
                           inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
                           decoration: const InputDecoration(
-                              prefixText: '\$',
-                              hintText: '40.99'
+                              hintText: 'Value'
                           ),
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: value,
                       ),
-                      Container(height: 10), // Divider
+                      Container(height: 10),
+                      TextFormField(
+                        inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
+                        decoration: const InputDecoration(
+                            hintText: 'Tags'
+                        ),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        controller: tag,
+                      ),
+                      Container(height: 10), //
                       Container(
-                        color: const Color(0xFF21FA90),
+                        color: const Color(0x9955c2da),
                         width: screenWidth / 4,
                         child: TextButton(
-                            child: const Text("Submit It", style: TextStyle(color: Colors.white, fontSize: 16)),
+                            child: const Text("Enter", style: TextStyle(color: Colors.white, fontSize: 16)),
                             onPressed: (){
                               if (_formKey.currentState!.validate()) {
                                 final model = Provider.of<ViewModel>(context, listen: false);

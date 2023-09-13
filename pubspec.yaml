@@ -39,6 +39,7 @@ dependencies:
   path: ^1.8.2
   fl_chart:
   provider:
+  splash_screen_view: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -5,6 +5,7 @@
 
 
 import 'package:budge/database/view_model.dart';
+import 'package:budge/views/splash.dart';
 import 'package:budge/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Georgia'
         ),
-          home: const Wrapper()
+          home: const SplashScreen()
       )
     );
   }

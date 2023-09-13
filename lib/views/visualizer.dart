@@ -31,7 +31,6 @@ class _DataVisualizerState extends State<DataVisualizer>{
                 return Column(
                 children: [
                   Container(height: 30),
-                  const Text('Available Cash:', style: TextStyle(fontSize: 20)),
                   Text('\$${double.parse((view[2]).toStringAsFixed(2))}', style: const TextStyle(fontSize: 40)),
                   Container(height: 30),
                   Flexible(

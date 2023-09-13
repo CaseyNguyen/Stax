@@ -27,7 +27,7 @@ class _ExpenseFormState extends State<ExpenseForm>{
     return Form(
       key: _formKey,
       child: Scaffold(
-        appBar: AppBar(title: const Text("Add Income"),
+        appBar: AppBar(title: const Text("Expense"),
           centerTitle: true,
         ),
         body:
