@@ -20,7 +20,7 @@ class TransactionButton extends StatelessWidget{
         Container(
           height: 75,
           width: screenWidth / 2,
-          color: const Color(0xFF21FA90),
+          color: const Color(0xFF4CAF50),
           child: TextButton(
             child: const Icon(Icons.add, color: Colors.white),
             onPressed: () {
@@ -33,7 +33,7 @@ class TransactionButton extends StatelessWidget{
         Container(
           height: 75,
           width: screenWidth / 2,
-          color: const Color(0xFFFF6B6B),
+          color: const Color(0xFFFF5722),
           child: TextButton(
               child: const Icon(Icons.remove, color: Colors.white),
               onPressed: () {

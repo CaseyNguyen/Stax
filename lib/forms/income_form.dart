@@ -43,8 +43,8 @@ class IncomeFormState extends State<IncomeForm>{
                       TextFormField(
                         textCapitalization: TextCapitalization.words,
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.person, color: Colors.grey),
-                          hintText: 'Name',
+                          prefixIcon: Icon(Icons.drive_file_rename_outline, color: Colors.grey),
+                          hintText: 'Title',
                         ),
                         controller: label,
                       ),
@@ -62,17 +62,16 @@ class IncomeFormState extends State<IncomeForm>{
                       TextFormField(
                         inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.label_important, color: Colors.grey),
+                            prefixIcon: Icon(Icons.bookmark_add_outlined, color: Colors.grey),
                             hintText: 'Tags'
                         ),
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         controller: tag,
                       ),
                       const CustomDivider(),
-                      Container(
-                        color: const Color(0x9955c2da),
+                      SizedBox(
                         width: screenWidth / 4,
-                        child: TextButton(
+                        child: OutlinedButton(
                             child: const Text("Enter", style: TextStyle(color: Colors.white, fontSize: 16)),
                             onPressed: (){
                               if (_formKey.currentState!.validate()) {

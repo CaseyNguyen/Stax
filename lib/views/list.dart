@@ -21,14 +21,20 @@ class TransactionList extends StatelessWidget{
       builder: (context, snapshot){
         if (snapshot.hasData){
           final view = snapshot.data!;
-          return ListView.builder(
+          if (view.isEmpty) {
+            return const Center(
+              child: Text("You have no transactions so far.\nUse the + or - buttons to add income/expense.",
+              textAlign: TextAlign.center)
+            );
+          } return ListView.builder(
             itemCount: view.length,
             itemBuilder: (context, index) =>
                 Card(
-                  child: ExpansionTile(
+                  child: ListTile(
                     title: ShowType(type: view[index].type),
                     subtitle: Text('from ${view[index].name}'),
-                    trailing: Text('\$${view[index].value.toStringAsFixed(2)}')
+                    trailing: Text('\$${view[index].value.toStringAsFixed(2)}'),
+                    onTap: () {},
                   )
                 )
           );
