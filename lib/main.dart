@@ -8,6 +8,7 @@ import 'package:budge/database/view_model.dart';
 import 'package:budge/views/splash.dart';
 import 'package:budge/wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'database/database.dart';
 
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
-        fontFamily: 'Georgia'
-        ),
-          home: const SplashScreen()
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
+        home: const SplashScreen()
       )
     );
   }

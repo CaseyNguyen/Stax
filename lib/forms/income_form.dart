@@ -8,6 +8,7 @@
 import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../blocks/divider.dart';
 import 'decimal_formatter.dart';
 
 class IncomeForm extends StatefulWidget{
@@ -38,33 +39,36 @@ class IncomeFormState extends State<IncomeForm>{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(height: 10), // Divider
+                      const CustomDivider(), // Divider
                       TextFormField(
                         textCapitalization: TextCapitalization.words,
                         decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.person, color: Colors.grey),
                           hintText: 'Name',
                         ),
                         controller: label,
                       ),
-                      Container(height: 10), // Divider
+                      const CustomDivider(),
                       TextFormField(
                           inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
                           decoration: const InputDecoration(
+                              prefixIcon: Icon(Icons.attach_money, color: Colors.grey),
                               hintText: 'Value'
                           ),
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: value,
                       ),
-                      Container(height: 10),
+                      const CustomDivider(),
                       TextFormField(
                         inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
                         decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.label_important, color: Colors.grey),
                             hintText: 'Tags'
                         ),
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         controller: tag,
                       ),
-                      Container(height: 10), //
+                      const CustomDivider(),
                       Container(
                         color: const Color(0x9955c2da),
                         width: screenWidth / 4,

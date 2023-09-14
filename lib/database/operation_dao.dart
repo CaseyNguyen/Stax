@@ -10,7 +10,7 @@
 
 
 import 'package:floor/floor.dart';
-import '../entities/transaction.dart';
+import '../entities/money.dart';
 
 @dao
 abstract class MoneyDao{

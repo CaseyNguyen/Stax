@@ -7,7 +7,7 @@
 // the visualizer lots of cool data.
 
 import 'package:flutter/cupertino.dart';
-import '../entities/transaction.dart';
+import '../entities/money.dart';
 import 'database.dart';
 import 'dart:math';
 import 'package:flutter/widgets.dart';

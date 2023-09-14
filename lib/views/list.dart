@@ -8,6 +8,8 @@ import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../blocks/show_type.dart';
+
 class TransactionList extends StatelessWidget{
   const TransactionList({super.key});
   @override
@@ -24,13 +26,9 @@ class TransactionList extends StatelessWidget{
             itemBuilder: (context, index) =>
                 Card(
                   child: ExpansionTile(
-                    title: Text(view[index].name),
-                    subtitle: Text(view[index].value.toStringAsFixed(2)),
-                    children: const [
-                      ListTile(
-                          title: Text("More information")
-                      ),
-                    ],
+                    title: ShowType(type: view[index].type),
+                    subtitle: Text('from ${view[index].name}'),
+                    trailing: Text('\$${view[index].value.toStringAsFixed(2)}')
                   )
                 )
           );

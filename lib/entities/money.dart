@@ -1,4 +1,4 @@
-// transaction.dart
+// money.dart
 // Created by Casey Nguyen
 // VERSION CONTROL:
 // 8.17.2023 - Created Income class outline.

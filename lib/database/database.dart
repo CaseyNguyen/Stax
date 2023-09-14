@@ -10,7 +10,7 @@ import 'package:floor/floor.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 
 import 'operation_dao.dart';
-import '../entities/transaction.dart';
+import '../entities/money.dart';
 
 part 'database.g.dart';
 
