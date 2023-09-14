@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class UtilizationReport extends StatelessWidget{
   UtilizationReport({required this.view, super.key});
   List<double> view;
+  NumberFormat myFormat = NumberFormat.decimalPattern('en_us');
   @override
   Widget build(BuildContext context){
     return Column(
       children: [
-        const Text('Financial Report', style: TextStyle(
+        const Text('Stax Report', style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 24
+          fontSize: 20
         )),
         (view[0] == 0 || view[1] == 0) ?
           Container() :
-          Text('You have used ${((view[5]).toStringAsFixed(2))}% of reported income.'),
-        Text('You have reported \$${(view[0].toStringAsFixed(2))} in income.'),
-        Text('You have reported \$${(view[1].toStringAsFixed(2))} in expenses.'),
+          Text('You have used ${(myFormat.format(view[5]))}% of reported income.'),
+        Text('You have reported \$${(myFormat.format(view[0]))} in income.'),
+        Text('You have reported \$${(myFormat.format(view[1]))} in expenses.'),
       ]
     );
   }

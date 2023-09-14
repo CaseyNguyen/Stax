@@ -41,6 +41,7 @@ dependencies:
   provider:
   splash_screen_view: ^3.0.0
   google_fonts:
+  intl:
 
 dev_dependencies:
   flutter_test:
