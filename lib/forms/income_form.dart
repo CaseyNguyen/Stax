@@ -60,12 +60,10 @@ class IncomeFormState extends State<IncomeForm>{
                       ),
                       const CustomDivider(),
                       TextFormField(
-                        inputFormatters: [DecimalTextInputFormatter(decimalRange: 2)],
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.bookmark_add_outlined, color: Colors.grey),
-                            hintText: 'Tags'
+                            hintText: 'Tags (optional)'
                         ),
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         controller: tag,
                       ),
                       const CustomDivider(),

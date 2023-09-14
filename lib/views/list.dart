@@ -3,6 +3,7 @@
 // VERSION CONTROL:
 // 8.18.2023 - Created to very neatly hold transaction list.
 // 8.21.2023 - Fixed doubles to only show two decimals.
+// 9.14.2023 - Overhauled listview.
 
 import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';

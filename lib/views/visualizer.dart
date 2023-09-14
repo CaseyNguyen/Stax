@@ -10,9 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../blocks/report.dart';
+import '../blocks/utilization.dart';
+
 class DataVisualizer extends StatefulWidget {
   const DataVisualizer({super.key});
-
   @override
   State<DataVisualizer> createState() => _DataVisualizerState();
 }
@@ -31,7 +33,7 @@ class _DataVisualizerState extends State<DataVisualizer>{
                 return Column(
                 children: [
                   Container(height: 30),
-                  Text('\$${double.parse((view[2]).toStringAsFixed(2))}', style: const TextStyle(fontSize: 40)),
+                  Text('\$${(view[2]).toStringAsFixed(2)}', style: const TextStyle(fontSize: 40)),
                   Container(height: 30),
                   Flexible(
                     child:
@@ -39,10 +41,12 @@ class _DataVisualizerState extends State<DataVisualizer>{
                         radius: 120.0,
                         lineWidth: 40.0,
                         percent: view[4],
-                        center: const Text('', style: TextStyle(fontSize: 40)),
+                        center: Utilization(percent: view[3]),
                         progressColor: Colors.green,
                       )
                   ),
+                  Container(height: 30),
+                  UtilizationReport(view: view),
                 ]
               );
             } return const Center(

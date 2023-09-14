@@ -22,7 +22,7 @@ class ViewModel extends ChangeNotifier{
 
   // balance sends the visualizer information.
   // Index 0 - Sum of incomes; Index 1 - Sum of expenses; 2 - Ready cash;
-  // 3 - Utilization %, 4 - Utilization % for visual
+  // 3 - Utilization %, 4 - Utilization % for visual, 5 - Expense / Income
   Future<List<double>> get balance async{
     List<Money> transactionList = await _db.moneyDao.findAllTransactions();
     double incomeTotal = 0.0;
@@ -47,7 +47,9 @@ class ViewModel extends ChangeNotifier{
     else if (visualPercentage > 1.0){
       visualPercentage = 1.0;
     }
-    return [incomeTotal, expenseTotal, balance, percentage *= 100, visualPercentage];
+    double expenseDivIncome = expenseTotal / incomeTotal;
+    expenseDivIncome *= 100;
+    return [incomeTotal, expenseTotal, balance, percentage *= 100, visualPercentage, expenseDivIncome];
   }
 
   // addIncome
