@@ -11,13 +11,23 @@ class UtilizationReport extends StatelessWidget{
       children: [
         const Text('Stax Report', style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 20
+          fontSize: 24
         )),
         (view[0] == 0 || view[1] == 0) ?
           Container() :
-          Text('You have used ${(myFormat.format(view[5]))}% of reported income.'),
-        Text('You have reported \$${(myFormat.format(view[0]))} in income.'),
-        Text('You have reported \$${(myFormat.format(view[1]))} in expenses.'),
+          Text('Used ${(myFormat.format(view[5]))}% of reported income.',
+          style: const TextStyle(
+              fontSize: 18
+          )),
+        Text('You have reported \$${(myFormat.format(view[0]))} in income.',
+          style: const TextStyle(
+              fontSize: 18
+          )),
+        Text('You have reported \$${(myFormat.format(view[1]))} in expenses.',
+          style: const TextStyle(
+              fontSize: 18
+          ),
+        ),
       ]
     );
   }

@@ -33,24 +33,13 @@ class _TopButtonState extends State<TopButton> {
         },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
           PopupMenuItem<SampleItem>(
-            value: SampleItem.itemOne,
-            child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  const Icon(Icons.settings),
-                  Container(width: 8),
-                  const Text('Settings')
-                ]
-            ),
-          ),
-          PopupMenuItem<SampleItem>(
             value: SampleItem.itemTwo,
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                Icon(Icons.delete_forever),
+                const Icon(Icons.delete_forever),
                 Container(width: 8),
-                Text('Purge Data')
+                const Text('Reset Data')
               ]
             ),
             onTap: () {
@@ -73,9 +62,9 @@ class _TopButtonState extends State<TopButton> {
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Icon(Icons.newspaper),
+                  const Icon(Icons.newspaper),
                   Container(width: 8),
-                  Text('Credits')
+                  const Text('Credits')
                 ]
             ),
             onTap: () {}

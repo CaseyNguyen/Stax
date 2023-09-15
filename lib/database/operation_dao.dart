@@ -22,8 +22,6 @@ abstract class MoneyDao{
   @Query('SELECT * FROM Money')
   Future<List<double>> sumIncome();
 
-  @Query('DROP TABLE IF EXISTS Money')
-  Future<void> drop();
 
   // Retrieve all expenses from the DB.
   @Query('SELECT SUM(value) FROM Money WHERE type = 1')
@@ -41,4 +39,7 @@ abstract class MoneyDao{
   // Insert an income into the DB.
   @insert
   Future<void> insertIncome(Money value);
+
+  @delete
+  Future<void> deleteTransaction(Money transaction);
 }

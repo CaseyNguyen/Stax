@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../blocks/balance.dart';
 import '../blocks/report.dart';
 import '../blocks/utilization.dart';
 
@@ -33,16 +34,20 @@ class _DataVisualizerState extends State<DataVisualizer>{
                 return Column(
                 children: [
                   Container(height: 30),
-                  Text('\$${(view[2]).toStringAsFixed(2)}', style: const TextStyle(fontSize: 40)),
+                  Balance(balance: view[2]),
                   Container(height: 30),
                   Flexible(
                     child:
                       CircularPercentIndicator(
+                        animation: true,
+                        animationDuration: 500,
+                        backgroundColor: Colors.blueGrey,
                         radius: 120.0,
                         lineWidth: 40.0,
                         percent: view[4],
-                        center: Utilization(percent: view[3]),
-                        progressColor: Colors.green,
+                        center: Container(),
+                        progressColor: Colors.greenAccent,
+                        circularStrokeCap: CircularStrokeCap.butt,
                       )
                   ),
                   Container(height: 30),

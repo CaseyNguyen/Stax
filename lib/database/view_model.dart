@@ -64,8 +64,9 @@ class ViewModel extends ChangeNotifier{
     notifyListeners();
   }
 
-  void drop() async{
-    _db.moneyDao.drop();
+  // Delete one transaction.
+  void deleteTransaction(Money transaction) async{
+    await _db.moneyDao.deleteTransaction(transaction);
     notifyListeners();
   }
 
