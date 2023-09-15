@@ -7,7 +7,6 @@
 
 import 'package:budge/forms/income_form.dart';
 import 'package:flutter/material.dart';
-import '../forms/expense_form.dart';
 
 class TransactionButton extends StatelessWidget{
   const TransactionButton({super.key});
@@ -26,7 +25,7 @@ class TransactionButton extends StatelessWidget{
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const IncomeForm()),
+                MaterialPageRoute(builder: (context) => const IncomeForm(type: 0)),
               );},
           ),
         ),
@@ -39,7 +38,7 @@ class TransactionButton extends StatelessWidget{
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ExpenseForm()),
+                  MaterialPageRoute(builder: (context) => const IncomeForm(type: 1)),
                 );
               },
               ),

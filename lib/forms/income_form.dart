@@ -12,7 +12,8 @@ import '../blocks/divider.dart';
 import 'decimal_formatter.dart';
 
 class IncomeForm extends StatefulWidget{
-  const IncomeForm({Key? key}) : super(key: key);
+  const IncomeForm({required this.type, super.key});
+  final int type;
   @override
   IncomeFormState createState() => IncomeFormState();
 }
@@ -28,7 +29,8 @@ class IncomeFormState extends State<IncomeForm>{
     return Form(
       key: _formKey,
       child: Scaffold(
-        appBar: AppBar(title: const Text("Income"),
+        appBar: AppBar(
+          title: (widget.type == 0) ? const Text("Income") : const Text("Expense"),
           centerTitle: true,
         ),
         body:
@@ -74,7 +76,7 @@ class IncomeFormState extends State<IncomeForm>{
                             onPressed: (){
                               if (_formKey.currentState!.validate()) {
                                 final model = Provider.of<ViewModel>(context, listen: false);
-                                model.addIncome(0, label.text, double.parse(value.text));
+                                model.addIncome(widget.type, label.text, double.parse(value.text));
                                 Navigator.pop(context);
                               }
                             }

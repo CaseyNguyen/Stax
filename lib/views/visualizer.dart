@@ -40,7 +40,7 @@ class _DataVisualizerState extends State<DataVisualizer>{
                     child:
                       CircularPercentIndicator(
                         animation: true,
-                        animationDuration: 500,
+                        animationDuration: 1000,
                         backgroundColor: Colors.blueGrey,
                         radius: 120.0,
                         lineWidth: 40.0,
