@@ -20,9 +20,7 @@ Then, I wanted to select a color palette that would make it clear what each piec
 
 In the first build, I wanted to have a basic interface. I used the 'percent_indicator' library to create a small visualization of what your balance is. I decided to split the dashboard between the data visualizer interface and list format so as to prevent endless scrolling of the list without seeing the visualizer.
 
-![image](https://github.com/CaseyNguyen/Stax/assets/83699098/fdc0120b-d388-4a17-bcaf-25cc62ccb7a5)
-
-![image](https://github.com/CaseyNguyen/Stax/assets/83699098/40545894-e7f2-4fad-a896-7a4a1dee248a)
+![image](https://github.com/CaseyNguyen/Stax/assets/83699098/fdc0120b-d388-4a17-bcaf-25cc62ccb7a5) ![image](https://github.com/CaseyNguyen/Stax/assets/83699098/40545894-e7f2-4fad-a896-7a4a1dee248a)
 
 I also created a simple transaction submission form. I realized it might be easier to just refuse invalid doubles for money, so I used regex to validate that cash values were, in fact, cash values.
 
