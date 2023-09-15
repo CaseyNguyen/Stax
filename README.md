@@ -1,6 +1,6 @@
 # Stax
 
-Stax is a mobile budgeting application built for Android and iOS. It is extremely simple to use and allows you to track income and expenses with ease.
+Stax is a mobile budgeting application built for Android and iOS. It is simple to use and allows you to track income and expenses with ease. Most importantly, I intend to release this for free.
 
 ## Design
 
@@ -17,3 +17,13 @@ Then, I wanted to select a color palette that would make it clear what each piec
 ![image](https://github.com/CaseyNguyen/Stax/assets/83699098/f7a3f780-0289-476f-9081-b45c360447fd)
 
 ## Application
+
+In the first build, I wanted to have a basic interface. I used the 'percent_indicator' library to create a small visualization of what your balance is. I decided to split the dashboard between the data visualizer interface and list format so as to prevent endless scrolling of the list without seeing the visualizer.
+
+![image](https://github.com/CaseyNguyen/Stax/assets/83699098/fdc0120b-d388-4a17-bcaf-25cc62ccb7a5) ![image](https://github.com/CaseyNguyen/Stax/assets/83699098/40545894-e7f2-4fad-a896-7a4a1dee248a)
+
+I also created a simple transaction submission form. I realized it might be easier to just refuse invalid doubles for money, so I used regex to validate that cash values were, in fact, cash values.
+
+![image](https://github.com/CaseyNguyen/Stax/assets/83699098/4d106c48-2a1b-4a53-9bbe-789de95bd8f4)
+
+Support for tags is currently the next step.
