@@ -75,4 +75,10 @@ class ViewModel extends ChangeNotifier{
     await _db.moneyDao.deleteIncomes();
     notifyListeners();
   }
+
+  void updateTransaction(int id, int type, String name, double value) async{
+    Money addIncome = Money(id, type, name, "Tag", value);
+    await _db.moneyDao.updateMoney(addIncome);
+    notifyListeners();
+  }
 }

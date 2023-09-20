@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: GoogleFonts.roboto().fontFamily,
       ),
-        home: const SplashScreen()
+        home: SplashScreen()
       )
     );
   }

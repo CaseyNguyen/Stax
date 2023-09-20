@@ -9,19 +9,26 @@ import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../blocks/divider.dart';
+import '../entities/money.dart';
 import 'decimal_formatter.dart';
 
-class IncomeForm extends StatefulWidget{
-  const IncomeForm({required this.type, super.key});
-  final int type;
+class EditForm extends StatefulWidget{
+  const EditForm({required this.view, super.key});
+  final Money view;
   @override
-  IncomeFormState createState() => IncomeFormState();
+  EditFormState createState() => EditFormState();
 }
 
-class IncomeFormState extends State<IncomeForm>{
+class EditFormState extends State<EditForm>{
   final _formKey = GlobalKey<FormState>();
-  final label = TextEditingController();
-  final value = TextEditingController();
+  late TextEditingController label;
+  late TextEditingController value;
+  @override
+  void initState() {
+    super.initState();
+    label = TextEditingController(text: widget.view.name);
+    value = TextEditingController(text: widget.view.value.toString());
+  }
   final tag = TextEditingController();
   @override
   Widget build(BuildContext context){
@@ -30,7 +37,7 @@ class IncomeFormState extends State<IncomeForm>{
       key: _formKey,
       child: Scaffold(
         appBar: AppBar(
-          title: (widget.type == 0) ? const Text("Income") : const Text("Expense"),
+          title: (widget.view.type == 0) ? const Text("Editing Income") : const Text("Editing Expense"),
           centerTitle: true,
         ),
         body:
@@ -92,7 +99,7 @@ class IncomeFormState extends State<IncomeForm>{
                             onPressed: (){
                               if (_formKey.currentState!.validate()) {
                                 final model = Provider.of<ViewModel>(context, listen: false);
-                                model.addIncome(widget.type, label.text, double.parse(value.text));
+                                model.updateTransaction(widget.view.id, widget.view.type, label.text, double.parse(value.text));
                                 Navigator.pop(context);
                               }
                             }

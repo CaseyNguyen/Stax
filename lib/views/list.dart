@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../blocks/show_type.dart';
+import '../forms/edit_form.dart';
 
 class TransactionList extends StatefulWidget{
   const TransactionList({super.key});
@@ -41,9 +42,33 @@ class _TransactionListState extends State<TransactionList>{
                     title: ShowType(type: view[index].type),
                     subtitle: Text('from ${view[index].name}'),
                     trailing: Text('\$${view[index].value.toStringAsFixed(2)}'),
-                    onTap: () async {
-                      model.deleteTransaction(view[index]);
-                    },
+                    onTap: () async => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text(view[index].name),
+                        content: const Text('AlertDialog description'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () async {
+                              Navigator.pop(context, 'Edit');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => EditForm(view: view[index])),
+                              );
+                            },
+                            child: const Text('Edit'),
+                          ),
+                          TextButton(
+                            onPressed: () async {
+                              model.deleteTransaction(view[index]);
+                              Navigator.pop(context, 'Delete');
+                            },
+                            child: const Text('Delete'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    //
                   )
                 )
           );

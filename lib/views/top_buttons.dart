@@ -7,33 +7,24 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../alert/credits.dart';
 import '../database/view_model.dart';
 
 // This is the type used by the popup menu below.
-enum SampleItem { itemOne, itemTwo, itemThree }
 
 class TopButton extends StatefulWidget {
   const TopButton({super.key});
-
   @override
   State<TopButton> createState() => _TopButtonState();
 }
 
 class _TopButtonState extends State<TopButton> {
-  SampleItem? selectedMenu;
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<SampleItem>(
-        initialValue: selectedMenu,
+    return PopupMenuButton(
         // Callback that sets the selected popup menu item.
-        onSelected: (SampleItem item) {
-          setState(() {
-            selectedMenu = item;
-          });
-        },
-        itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
-          PopupMenuItem<SampleItem>(
-            value: SampleItem.itemTwo,
+        itemBuilder: (BuildContext context) => [
+          PopupMenuItem(
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
@@ -42,7 +33,7 @@ class _TopButtonState extends State<TopButton> {
                 const Text('Reset Data')
               ]
             ),
-            onTap: () {
+            onTap: () async {
               log("Attempting to delete DB.");
               final snackBar = SnackBar(
                 content: const Text('Deleted database information.'),
@@ -57,8 +48,7 @@ class _TopButtonState extends State<TopButton> {
               model.deleteIncome();
             },
           ),
-          PopupMenuItem<SampleItem>(
-            value: SampleItem.itemThree,
+          PopupMenuItem(
             child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
@@ -67,8 +57,13 @@ class _TopButtonState extends State<TopButton> {
                   const Text('Credits')
                 ]
             ),
-            onTap: () {}
-          ),
+            onTap: () async {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Credits()),
+              );
+            }
+    ),
       ]
     );
   }
