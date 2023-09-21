@@ -9,10 +9,9 @@ import 'package:budge/database/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
 import '../blocks/balance.dart';
 import '../blocks/report.dart';
-import '../blocks/utilization.dart';
+import '../entities/money.dart';
 
 class DataVisualizer extends StatefulWidget {
   const DataVisualizer({super.key});

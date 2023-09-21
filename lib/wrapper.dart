@@ -31,9 +31,9 @@ class _WrapperState extends State<Wrapper>{
       ),
         body: PageView(
           controller: _pageController,
-          children: <Widget>[
-            const DataVisualizer(), // Replace with the first page widget
-            TransactionList(), // Replace with the second page widget
+          children: const <Widget>[
+            DataVisualizer(),
+            TransactionList(),
           ],
         ),
       bottomNavigationBar: const BottomAppBar(
