@@ -2,6 +2,8 @@
 
 Stax is a mobile budgeting application built for Android and iOS. It is simple to use and allows you to track income and expenses with ease. Most importantly, I intend to release this for free.
 
+It will be released on the Google Play store here: https://play.google.com/store/apps/details?id=com.casey.budge.
+
 ## Design
 
 I'm not very good at budgeting, and I've used many applications to attempt to remedy this issue. I have enjoyed aspects of these apps, so accompanied with some true budgeting knowledge, and wanted to make a really easy app to budget with. I identified several user-related issues with apps that I have had in the past which led me to give up use of it. This includes:
@@ -25,5 +27,3 @@ In the first build, I wanted to have a basic interface. I used the 'percent_indi
 I also created a simple transaction submission form. I realized it might be easier to just refuse invalid doubles for money, so I used regex to validate that cash values were, in fact, cash values.
 
 ![image](https://github.com/CaseyNguyen/Stax/assets/83699098/4d106c48-2a1b-4a53-9bbe-789de95bd8f4)
-
-Support for tags is currently the next step.
