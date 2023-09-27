@@ -1,6 +1,6 @@
 # Stax
 
-Stax is a mobile budgeting application built for Android and iOS. It is simple to use and allows you to track income and expenses with ease. Most importantly, I intend to release this for free.
+Stax is a simple mobile budgeting application built for Android and iOS. It originated as a solution for my own budgeting issues, but is available for anyone to use!
 
 It will be released on the Google Play store here: https://play.google.com/store/apps/details?id=com.casey.budge.
 
